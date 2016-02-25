@@ -1,0 +1,6 @@
+---
+  - hosts: poligon
+    become: yes
+    roles:
+      - common
+      - yaml

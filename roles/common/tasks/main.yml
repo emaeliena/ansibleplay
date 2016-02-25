@@ -1,0 +1,8 @@
+---
+  - name: install basic packages
+    with_items:
+      - vim
+      - mc
+      - tree
+      - ipython
+    apt: name={{ item }} state=present

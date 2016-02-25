@@ -1,0 +1,3 @@
+---
+  test_file_path: /tmp/test.yml
+  dest_file_path: /tmp/dest.yml

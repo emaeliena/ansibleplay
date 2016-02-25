@@ -1,0 +1,23 @@
+---
+  - name: upload yaml
+    copy: src=test.yml dest={{ test_file_path }}
+
+  - name: read yaml
+    shell: cat {{ test_file_path }}
+    register: result
+
+  - name: setting fact
+    set_fact: yaml_data="{{ result.stdout | from_yaml }}"
+
+  - name: debug yaml data
+    debug: var=yaml_data
+
+  - name: update yaml data
+    update_yaml_data: data={{yaml_data}}
+    register: result
+
+  - name: debug yaml data
+    debug: var=result
+
+  - name: save yaml data
+    copy: content={{ result.data | to_yaml }} dest={{ dest_file_path }}
